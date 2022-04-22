@@ -1,5 +1,8 @@
 import java.net.*;
 import java.io.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EchoClient {
 	public static void main(String[] args) throws IOException {
@@ -10,7 +13,7 @@ public class EchoClient {
 		addr = InetAddress.getByName(args[0]);
 		
 		try {
-			socket = new Socket(addr, 25565);
+			socket = new Socket(addr, 25566);
 			System.out.println("Client avviato!");
 			
 			// creazione stream di input da socket
@@ -30,7 +33,6 @@ public class EchoClient {
 			while (true){
 				userInput = stdIn.readLine();
 				out.println(userInput);
-				if (userInput.equals("CHIUDI")) break;
 				System.out.println("Invio messaggio: " + in.readLine());
 			}
 		} catch (UnknownHostException e) {
